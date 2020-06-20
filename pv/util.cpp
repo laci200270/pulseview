@@ -169,7 +169,7 @@ QString format_value_si(double v, SIPrefix prefix, unsigned precision,
 	QString s;
 	QTextStream ts(&s);
 	if (sign && (v != 0))
-		ts << forcesign;
+		ts.setNumberFlags(ts.numberFlags() | QTextStream::ForceSign);
 	ts.setRealNumberNotation(QTextStream::FixedNotation);
 	ts.setRealNumberPrecision(precision);
 	ts << (v * multiplier) << ' ' << prefix << unit;
